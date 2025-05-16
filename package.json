@@ -1,0 +1,15 @@
+{
+  "name": "pospuc-modulo22-proj.desenv.appweb",
+  "version": "1.0.0",
+  "description": "Aplicacao Web",
+  "license": "ISC",
+  "author": "Suciu",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
