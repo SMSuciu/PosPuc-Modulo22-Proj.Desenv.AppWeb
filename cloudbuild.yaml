@@ -1,0 +1,15 @@
+# Este arquivo é um exemplo de configuração do Cloud Build para construir e implantar uma aplicação Docker no Google Cloud Run.
+# Ele define as etapas necessárias para construir a imagem Docker, fazer o push da imagem para o Google Container Registry e implantar a aplicação no Google Cloud Run.
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/hello-world', '.'] #imagem docker
+
+  - name: 'gcr.io/cloud-builders/docker' # push da imagem
+    args: ['push', 'gcr.io/$PROJECT_ID/hello-world']
+
+  - name: 'gcr.io/cloud-builders/gcloud' # deploy da imagem
+    args: ['run', 'deploy', 'hello-world', '--image', 'gcr.io/$PROJECT_ID/hello-world','--region', 'us-central', '--platform', 'managed','--allow-unauthenticated'] 
+  
+    entrypoint: gcloud
+    image: [gcr.io/google.com/cloudsdktool/cloud-sdk:latest]
